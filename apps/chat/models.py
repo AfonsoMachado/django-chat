@@ -13,6 +13,9 @@ class Room(models.Model):
     messages = models.ManyToManyField('Message', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Message(models.Model):
     user = models.ForeignKey(
@@ -21,3 +24,6 @@ class Message(models.Model):
     )
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}: {self.text}"
