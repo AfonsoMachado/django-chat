@@ -6,6 +6,6 @@ from .models import Message
 
 def home(request):
     messages = Message.objects.all()
-    return render(request, 'index.html', {
+    return render(request, 'chat/home.html', {
         'messages': messages
     })
