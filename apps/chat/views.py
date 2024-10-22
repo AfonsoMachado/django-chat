@@ -1,7 +1,11 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
+from .models import Message
 
 # Create your views here.
 
 
 def home(request):
-    return HttpResponse("Home")
+    messages = Message.objects.all()
+    return render(request, 'index.html', {
+        'messages': messages
+    })
